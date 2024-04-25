@@ -5,9 +5,8 @@ import { AuroraBackground } from "@/components/ui/aurora-background";
 import Image from "next/image";
 import Link from "next/link";
 import Umur from "@/components/ui/count";
-import React, { useState, useRef, useEffect } from "react";
-import { LayoutGrid } from "@/components/ui/layout-grid";
-import satu from "@/Image/1.jpg";
+import { satu, dua, tiga, empat, lima, enam } from "@/Image/foto";
+import Spotify from "@/components/ui/spotify";
 
 export default function AuroraBackgroundDemo() {
   return (
@@ -72,7 +71,7 @@ export default function AuroraBackgroundDemo() {
             </div>
             <div>Tekan Salah Satu Lovenya</div>
             <div className="flex">
-              <Link href={"#foto"}>
+              <Link href={"#lagu"}>
                 <Image
                   src="https://cdn.discordapp.com/emojis/887881507983732757.gif?size=60&quality=lossless"
                   alt="heart"
@@ -82,7 +81,7 @@ export default function AuroraBackgroundDemo() {
                   className="hover:scale-150 transition-all"
                 />
               </Link>
-              <Link href={"#foto"}>
+              <Link href={"#lagu"}>
                 <Image
                   src="https://cdn.discordapp.com/emojis/887881507983732757.gif?size=60&quality=lossless"
                   alt="heart"
@@ -92,7 +91,7 @@ export default function AuroraBackgroundDemo() {
                   className="hover:scale-150 transition-all"
                 />
               </Link>
-              <Link href={"#foto"}>
+              <Link href={"#lagu"}>
                 <Image
                   src="https://cdn.discordapp.com/emojis/887881507983732757.gif?size=60&quality=lossless"
                   alt="heart"
@@ -106,72 +105,52 @@ export default function AuroraBackgroundDemo() {
           </motion.div>
         </AuroraBackground>
       </div>
+      <div id="lagu">
+        <Spotify />
+      </div>
       <div id="foto">
-        <div className="h-[40rem] w-full bg-black  bg-grid-white/[0.2] relative flex items-center justify-center text-white font-bold">
-          <LayoutGrid cards={cards} />
+        <div className="bg-black  bg-grid-white/[0.2] relative flex items-center justify-center text-white font-bold">
+          <div className="grid grid-cols-2 gap-5 my-10">
+            {cards.map((card) => (
+              <Image
+                key={card.id}
+                src={card.image}
+                alt={`foto ${card.id}`}
+                width={150}
+                height={200}
+                className="hover:scale-150 transition-all hover:rounded-xl rounded-xl"
+              />
+            ))}
+          </div>
         </div>
       </div>
     </div>
   );
 }
 
-const SkeletonOne = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Syifa Malika Anzanie</p>
-    </div>
-  );
-};
-
-const SkeletonTwo = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Syifa Malika Anzanie</p>
-    </div>
-  );
-};
-const SkeletonThree = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Syifa Malika Anzanie</p>
-    </div>
-  );
-};
-const SkeletonFour = () => {
-  return (
-    <div>
-      <p className="font-bold text-4xl text-white">Syifa Malika Anzanie</p>
-    </div>
-  );
-};
-
 const cards = [
   {
     id: 1,
-    content: <SkeletonOne />,
-    className: "md:col-span-2",
-    thumbnail:
-      "https://images.unsplash.com/photo-1476231682828-37e571bc172f?q=80&w=3474&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: satu,
   },
   {
     id: 2,
-    content: <SkeletonTwo />,
-    className: "col-span-1",
-    thumbnail:
-      "https://images.unsplash.com/photo-1464457312035-3d7d0e0c058e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: dua,
   },
   {
     id: 3,
-    content: <SkeletonThree />,
-    className: "col-span-1",
-    thumbnail:
-      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: tiga,
   },
   {
     id: 4,
-    content: <SkeletonFour />,
-    className: "md:col-span-2",
-    thumbnail:
-      "https://images.unsplash.com/photo-1588880331179-bc9b93a8cb5e?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    image: empat,
+  },
+  {
+    id: 5,
+    image: lima,
+  },
+  {
+    id: 6,
+    image: enam,
   },
 ];
